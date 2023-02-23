@@ -26,12 +26,18 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "version_groups",
-				element: <VersionGroups />
+				element: <VersionGroups />,
+				children: [
+					{
+						path: ":id",
+						element: <p>Version group details</p>
+					}
+				]
 			},
-			{
-				path: "version_groups/:id",
-				element: <p>Version group details</p>
-			},
+			// {
+			// 	path: "version_groups/:id",
+			// 	element: <p>Version group details</p>
+			// },
 			{
 				path: "pokemons",
 				element: <Pokemons />

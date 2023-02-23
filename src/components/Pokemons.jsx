@@ -40,7 +40,6 @@ export const Pokemons = () => {
 
 	return (
 		<div>
-			<Link to="/" className="btn">Accueil</Link>
 			<h1>Les pokémons, {maxPokemons} au total!</h1>
 
 			<div className="form-control">
@@ -63,12 +62,12 @@ export const Pokemons = () => {
 			</div>
 
 			<div className="btn-group">
-				<button className={`btn ${previousUrl ?? "btn-disabled"}`}
+				<button className={`btn ${previousUrl ? "" : "btn-disabled"}`}
 				onClick={() => {
 					setUrlToFetch(previousUrl);
 				}}>Prev</button>
 
-				<button className={`btn ${nextUrl ?? "btn-disabled"}`}
+				<button className={`btn ${nextUrl ? "" : "btn-disabled"}`}
 					onClick={() => {
 						setUrlToFetch(nextUrl);
 					}}>Next</button>

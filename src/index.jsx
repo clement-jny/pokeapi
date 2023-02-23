@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Home } from "./components/Home";
-import { Pokedex } from "./components/Pokedex";
-import { Versions } from "./components/Versions";
-import { Pokemons } from "./components/Pokemons";
+import { Home } from "./components/home";
+import { Pokedex } from "./components/pokedex";
+import { VersionGroups } from "./components/versionGroups";
+import { Pokemons } from "./components/pokemons";
 
 import "./index.css";
 import { Layout } from "./components/Layout";
@@ -17,24 +17,33 @@ const router = createBrowserRouter([
 		errorElement: <p>Error 404!</p>,
 		children: [
 			{
+				index: true,
+				element: <Home />
+			},
+			{
 				path: "pokedex",
 				element: <Pokedex />
 			},
 			{
-				path: "/versions",
-				element: <Versions />
+				path: "version_groups",
+				element: <VersionGroups />
 			},
 			{
-				path: "/pokemons",
+				path: "version_groups/:id",
+				element: <p>Version group details</p>
+			},
+			{
+				path: "pokemons",
 				element: <Pokemons />
 			},
 			{
-				path: "/pokemons/:id",
+				path: "pokemons/:id",
+				element: <p>Pokemon details</p>
 			}
 		]
 	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-		<RouterProvider router={router} />
+	<RouterProvider router={router} />
 );

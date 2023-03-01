@@ -86,7 +86,7 @@ export const Pokemons = () => {
 											</figure>
 											<div className="card-body items-center text-center">
 												<h2 className="card-title">
-													{name.charAt(0).toUpperCase() + name.slice(1)}
+													{name}
 													<div className="badge badge-ghost"> {url.split('/')[6]} / {maxPokemons}</div>
 												</h2>
 												<div className="card-actions">

@@ -12,9 +12,7 @@ import { Layout } from "./components/Layout";
 
 
 import { worker } from "./mocks/browser";
-worker.start({
-	onUnhandledRequest: "warn",
-});
+worker.start({ onUnhandledRequest: "warn" });
 
 
 const router = createBrowserRouter([

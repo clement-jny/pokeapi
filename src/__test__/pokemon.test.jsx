@@ -14,6 +14,6 @@ test("je vérifie que le premier pokémon apparait", async () => {
 		</MemoryRouter>
 	);
 	//const linkElement = screen.getByText(/bulbasaur/i);
-	const $poke = await screen.findByText("Bulbasaur");
-	expect($poke).toBeInTheDocument();
+	const poke = await screen.findByText(/bulbasaur/);
+	expect(poke).toBeInTheDocument();
 })

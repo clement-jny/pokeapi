@@ -10,6 +10,13 @@ import { Pokemons } from "./components/pokemons";
 import "./index.css";
 import { Layout } from "./components/Layout";
 
+
+import { worker } from "./mocks/browser";
+worker.start({
+	onUnhandledRequest: "warn",
+});
+
+
 const router = createBrowserRouter([
 	{
 		path: "/",

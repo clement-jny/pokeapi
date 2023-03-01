@@ -33,7 +33,7 @@ export const handlers = [
 
 		//console.log(offset + " " + limit + " / " + req.url.searchParams);
 		return res(
-			ctx.delay(500),
+			ctx.delay(),
 			ctx.status(200),
 			ctx.json(limitedPokemons)
 		);

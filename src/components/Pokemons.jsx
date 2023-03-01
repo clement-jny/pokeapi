@@ -12,11 +12,6 @@ export const Pokemons = () => {
 	const [previousUrl, setPreviousUrl] = useState(null);
 	const [nextUrl, setNextUrl] = useState(null);
 
-
-	useEffect(() => {
-		setUrlToFetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=${limit}`);
-	}, [limit]);
-
 	useEffect(() => {
 		fetch(urlToFetch)
 			.then((res) => {
@@ -52,7 +47,11 @@ export const Pokemons = () => {
 			<div className="form-control">
 				<label className="input-group">
 					<span>Number</span>
-					<select className="select select-bordered" onChange={(e) => setLimit(e.target.value)}>
+					<select className="select select-bordered"
+						onChange={(e) => {
+							setLimit(e.target.value);
+							setUrlToFetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=${e.target.value}`)
+						}}>
 						<option defaultValue="20">20</option>
 						<option value="50">50</option>
 						<option value="100">100</option>
@@ -83,7 +82,7 @@ export const Pokemons = () => {
 									<>
 										<div className="card card-bordered bg-slate-100" key={name}>
 											<figure className="px-10 pt-10">
-												<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${url.split('/')[6]}.png`} alt={name} className="rounded-xl" />
+												{/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${url.split('/')[6]}.png`} alt={name} className="rounded-xl" /> */}
 											</figure>
 											<div className="card-body items-center text-center">
 												<h2 className="card-title">

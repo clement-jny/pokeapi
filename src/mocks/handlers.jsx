@@ -3,9 +3,39 @@ import allPokemons from "./fixtures/allPokemons.json";
 
 export const handlers = [
 	rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
+
+		const offset = req.url.searchParams.get("offset");
+		const limit = req.url.searchParams.get("limit");
+		//console.log(offset + " " + limit + " / " + req.url.searchParams);
+		//console.log(req.url);
+
+		const limitedPokemons = structuredClone(allPokemons);
+		limitedPokemons.results = limitedPokemons.results.slice(offset, limit === 0 ? allPokemons.length : Number(offset) + Number(limit));
+
+		limitedPokemons.next = `https://pokeapi.co/api/v2/pokemon?offset=${Number(offset) + Number(limit)}&limit=${limit}`;
+
+		const previousOffset = Number(offset) - Number(limit);
+		limitedPokemons.previous = previousOffset >= 0 ? `https://pokeapi.co/api/v2/pokemon?offset=${previousOffset}&limit=${limit}` : null;
+
+
+		//req.url.searchParams.set("offset", Number(offset) + Number(limit));
+		//limitedPokemons.previous = offset === Number(0) ? null : req.url.origin + req.url.pathname;
+		//limitedPokemons.next = limit === allPokemons.count ? null : req.url.origin + req.url.pathname + "?" + req.url.searchParams;
+		//req.url.searchParams.set("offset", limit);
+		//limitedPokemons.next = req.url.origin + req.url.pathname + "?offset=" + limit + "&limit=" + limit;
+		// limitedPokemons.previous = req.url
+
+		//console.log(req.url.searchParams.get("offset") + " / " + req.url.searchParams);
+		
+		//console.log(limitedPokemons.previous);
+		//console.log(limitedPokemons.next);
+		//console.log(limitedPokemons.results.length);
+
+		//console.log(offset + " " + limit + " / " + req.url.searchParams);
 		return res(
+			ctx.delay(500),
 			ctx.status(200),
-			ctx.json(allPokemons)
+			ctx.json(limitedPokemons)
 		);
 	})
 ]

@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Home } from "./components/home";
-import { Pokedex } from "./components/pokedex";
-import { VersionGroups } from "./components/versionGroups";
 import { Pokemons } from "./components/pokemons";
 
 import "./index.css";
@@ -12,7 +10,11 @@ import { Layout } from "./components/Layout";
 
 
 import { worker } from "./mocks/browser";
-worker.start({ onUnhandledRequest: "warn" });
+import { PokemonsDetails } from "./components/pokemonsDetails";
+import { getPokemon } from "./api/getPokemon";
+import { VersionGroupList } from "./components/versionGroup/versionGroupList";
+import { VersionGroupDetail } from "./components/versionGroup/versionGroupDetail";
+//worker.start({ onUnhandledRequest: "warn" });
 
 
 const router = createBrowserRouter([
@@ -26,30 +28,27 @@ const router = createBrowserRouter([
 				element: <Home />
 			},
 			{
-				path: "pokedex",
-				element: <Pokedex />
+				path: "version-group",
+				element: <VersionGroupList />
 			},
 			{
-				path: "version_groups",
-				element: <VersionGroups />,
-				children: [
-					{
-						path: ":id",
-						element: <p>Version group details</p>
-					}
-				]
+				path: "version-group/:versionGroupName",
+				element: <VersionGroupDetail />
 			},
-			// {
-			// 	path: "version_groups/:id",
-			// 	element: <p>Version group details</p>
-			// },
 			{
-				path: "pokemons",
+				path: "version-group/:versionGroupName/version/:versionName",
+				element: <p>Version</p> //check if :versionGroupName contains :versionName
+			},
+			{
+				path: "pokemon",
 				element: <Pokemons />
 			},
 			{
-				path: "pokemons/:id",
-				element: <p>Pokemon details</p>
+				path: "pokemon/:id",
+				element: <PokemonsDetails />,
+				// loader: ({ params }) => {
+				// 	return getPokemon(`${params.id}`)
+				// }
 			}
 		]
 	},

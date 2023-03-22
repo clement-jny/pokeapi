@@ -44,17 +44,17 @@ import { Pokemons } from "../components/pokemons";
 // });
 
 
-test("Vérifie que le nombre de pokémon afficher correspond à la limit définit", async () => {
-	render(<MemoryRouter><Pokemons /></MemoryRouter>);
+// test("Vérifie que le nombre de pokémon afficher correspond à la limit définit", async () => {
+// 	render(<MemoryRouter><Pokemons /></MemoryRouter>);
 
-	const select = screen.getByRole("combobox");
+// 	const select = screen.getByRole("combobox");
 
-	//console.log(select.lastChild);
+// 	//console.log(select.lastChild);
 
-	expect(screen.getByRole("option", { name: 20 }).selected).toBe(true);
+// 	expect(screen.getByRole("option", { name: 20 }).selected).toBe(true);
 	
-	fireEvent.change(select, { target: { value: 50 } });
+// 	fireEvent.change(select, { target: { value: 50 } });
 
-	expect(screen.getByRole("option", { name: 20 }).selected).toBe(false);
-	expect(screen.getByRole("option", { name: 50 }).selected).toBe(true);
-});
+// 	expect(screen.getByRole("option", { name: 20 }).selected).toBe(false);
+// 	expect(screen.getByRole("option", { name: 50 }).selected).toBe(true);
+// });

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Loading } from "./loading";
 
 export const Pokemons = () => {
 	const [pokemons, setPokemons] = useState([]);
@@ -34,7 +35,7 @@ export const Pokemons = () => {
 
 
 	return (
-		<div>
+		<div> {/* className="flex flex-col justify-center items-center" */}
 			<h1>Les pokémons, {maxPokemons} au total!</h1>
 
 			<div className="form-control">
@@ -62,9 +63,9 @@ export const Pokemons = () => {
 
 			<div className="btn-group">
 				<button className={`btn ${previousUrl ? "" : "btn-disabled"}`}
-				onClick={() => {
-					setUrlToFetch(previousUrl);
-				}}>Prev</button>
+					onClick={() => {
+						setUrlToFetch(previousUrl);
+					}}>Prev</button>
 
 				<button className={`btn ${nextUrl ? "" : "btn-disabled"}`}
 					onClick={() => {
@@ -73,7 +74,7 @@ export const Pokemons = () => {
 			</div>
 
 			{
-				pokemons.length > 0 ? (
+				pokemons.length > 0 ?
 					<div className="grid grid-cols-4 gap-7 m-8">
 						{
 							pokemons
@@ -82,32 +83,34 @@ export const Pokemons = () => {
 									<>
 										<div className="card card-bordered bg-slate-100" key={name}>
 											<figure className="px-10 pt-10">
-												{/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${url.split('/')[6]}.png`} alt={name} className="rounded-xl" /> */}
+												<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${url.split('/')[6]}.png`} alt={name} className="rounded-xl" />
 											</figure>
 											<div className="card-body items-center text-center">
 												<h2 className="card-title">
 													{name}
-													<div className="badge badge-ghost"> {url.split('/')[6]} / {maxPokemons}</div>
 												</h2>
+												<div className="badge badge-ghost"> {url.split('/')[6]} / {maxPokemons}</div>
 												<div className="card-actions">
 													{/* The button to open modal */}
-													<label htmlFor={`modal-${name}`} className="btn">See more</label>
+													{/* <label htmlFor={`modal-${name}`} className="btn">See more</label> */}
+
+													<Link to={`/pokemon/${url.split('/')[6]}`} className='btn'>See more</Link>
 												</div>
 											</div>
 										</div>
 
 										{/* Put this part before </body> tag */}
-										<input type="checkbox" id={`modal-${name}`} className="modal-toggle" />
+										{/* <input type="checkbox" id={`modal-${name}`} className="modal-toggle" />
 										<label htmlFor={`modal-${name}`} className="modal cursor-pointer">
 											<label className="modal-box relative" htmlFor="">
 												<h3 className="text-lg font-bold">Pokemon : {name}</h3>
 											</label>
-										</label>
+										</label> */}
 									</>
 								))
 						}
 					</div>
-				) : (<p>Pas de pokémon à afficher</p>)
+					: <Loading />
 			}
 		</div>
 	);

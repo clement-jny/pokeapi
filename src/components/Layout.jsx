@@ -8,13 +8,12 @@ export const Layout = () => {
 
 				<div className="flex flex-col space-y-3">
 					<NavLink to="/" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Home</NavLink>
-					<NavLink to="pokedex" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Pokedex</NavLink>
-					<NavLink to="version_groups" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Version Groups</NavLink>
-					<NavLink to="pokemons" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Pokemons</NavLink>
+					<NavLink to="version-group" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Version Group</NavLink>
+					<NavLink to="pokemon" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Pokemon</NavLink>
 				</div>
 			</div>
-			
-			<div className="w-full flex justify-center items-center">
+
+			<div className="w-full">
 				<Outlet />
 			</div>
 		</div>

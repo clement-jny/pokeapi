@@ -3,17 +3,19 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Home } from "./components/home";
-import { Pokemons } from "./components/pokemons";
+import { Pokemons } from "./components/pokemon/pokemons";
 
 import "./index.css";
 import { Layout } from "./components/Layout";
 
 
 import { worker } from "./mocks/browser";
-import { PokemonsDetails } from "./components/pokemonsDetails";
+import { PokemonsDetails } from "./components/pokemon/pokemonsDetails";
 import { getPokemon } from "./api/getPokemon";
 import { VersionGroupList } from "./components/versionGroup/versionGroupList";
 import { VersionGroupDetail } from "./components/versionGroup/versionGroupDetail";
+import { PokedexList } from "./components/pokedex/pokedexList";
+import { Pokedex } from "./components/pokedexDraw/pokedex";
 //worker.start({ onUnhandledRequest: "warn" });
 
 
@@ -36,8 +38,8 @@ const router = createBrowserRouter([
 				element: <VersionGroupDetail />
 			},
 			{
-				path: "version-group/:versionGroupName/version/:versionName",
-				element: <p>Version</p> //check if :versionGroupName contains :versionName
+				path: "version-group/:versionGroupName/pokedex/:pokedexName",
+				element: <PokedexList />
 			},
 			{
 				path: "pokemon",
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
 				// loader: ({ params }) => {
 				// 	return getPokemon(`${params.id}`)
 				// }
+			},
+			{
+				path: "pokedex",
+				element: <Pokedex />
 			}
 		]
 	},

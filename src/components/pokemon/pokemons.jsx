@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Loading } from "./loading";
+import { Loading } from "../loading";
 
 export const Pokemons = () => {
 	const [pokemons, setPokemons] = useState([]);

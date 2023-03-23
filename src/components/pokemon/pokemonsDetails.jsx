@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { Loading } from "./loading";
+import { Loading } from "../loading";
 
 export const PokemonsDetails = () => {
 	const { id } = useParams();

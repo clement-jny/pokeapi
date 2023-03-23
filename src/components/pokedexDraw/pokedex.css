@@ -39,12 +39,12 @@
 	background-color: #98fe00;
 }
 
-* {
+/* * {
 	margin: 0;
 	padding: 0;
-}
+} */
 
-body {
+/* body {
 	height: 100vh;
 	width: 100vw;
 	display: flex;
@@ -52,7 +52,7 @@ body {
 	justify-content: start;
 	align-items: center;
 	background-color: var(--secondary-bg-color);
-}
+} */
 
 .logo {
 	justify-self: start;
@@ -298,10 +298,13 @@ input {
 	background-color: var(--main-screen-bg-color);
 	border: solid black 2px;
 	border-radius: 5%;
-	background-image: url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png);
+	/* background-image: url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png); */
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .bottom-screen-lights {
@@ -369,7 +372,7 @@ input {
 
 #name-screen {
 	width: 100%;
-	font-family: 'Press Start 2P', cursive;
+	/* font-family: 'Press Start 2P', cursive; */
 	text-align: center;
 	font-size: 8.5px;
 	overflow-wrap: break-word;
@@ -529,7 +532,7 @@ input {
 }
 
 .right-panel-screen {
-	font-family: 'Press Start 2P', cursive;
+	/* font-family: 'Press Start 2P', cursive; */
 	width: 146px;
 	height: 64px;
 	background-color: var(--secondary-screen-bg-color);

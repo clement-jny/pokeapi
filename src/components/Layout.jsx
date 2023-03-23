@@ -10,6 +10,7 @@ export const Layout = () => {
 					<NavLink to="/" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Home</NavLink>
 					<NavLink to="version-group" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Version Group</NavLink>
 					<NavLink to="pokemon" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Pokemon</NavLink>
+					<NavLink to="pokedex" className={({ isActive }) => isActive ? "btn btn-active" : "btn btn-outline"}>Pokedex</NavLink>
 				</div>
 			</div>
 

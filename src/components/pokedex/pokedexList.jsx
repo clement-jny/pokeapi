@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Loading } from "../loading";
-import { VersionGroupCard } from "./versionGroupCard";
 
-export const VersionGroupList = () => {
-	const [versionGroup, setVersionGroup] = useState(null);
+export const PokedexList = () => {
+	let { state } = useLocation();
+
+	const [pokedex, setPokedex] = useState(null);
 
 	useEffect(() => {
-		fetch("https://pokeapi.co/api/v2/version-group?limit=27")
+		fetch(state.url)
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
@@ -15,22 +17,22 @@ export const VersionGroupList = () => {
 				}
 			})
 			.then((res) => {
-				setVersionGroup(res.results);
+				setPokedex(res);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	}, []);
 
-	return versionGroup ?
+	return pokedex ?
 	(
 		<div>
-			<h1 className="text-center text-4xl my-8">Version group</h1>
-			
+			<h1 className="text-center text-4xl my-8">Pokedex</h1>
+
 			<div className="grid grid-cols-4 gap-7 m-8">
 			{
-				versionGroup.map(({name, url}) => (
-					<VersionGroupCard name={name} url={url} />
+				pokedex.pokemon_entries.map((pokemon) => (
+					<p>{pokemon.pokemon_species.name}</p>
 				))
 			}
 			</div>
